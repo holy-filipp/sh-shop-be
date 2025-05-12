@@ -2234,7 +2234,7 @@
     yalc "1.0.0-pre.53"
     yup "0.32.9"
 
-"@strapi/types@5.13.0":
+"@strapi/types@5.13.0", "@strapi/types@^5.13.0":
   version "5.13.0"
   resolved "https://registry.yarnpkg.com/@strapi/types/-/types-5.13.0.tgz#ca9e55791ad3adb7e4c5537175ca0d624f7a8274"
   integrity sha512-ylbIl3PAXwnTSNhlM4a/o90xNN2kEfRnd/o+RaIGXf/xIrLSrQQigH6EmVcxhAiSd6UH0Tpjcyyjk0C2BPprUQ==
