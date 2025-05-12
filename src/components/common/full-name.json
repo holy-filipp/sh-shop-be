@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_common_full_names",
+  "info": {
+    "displayName": "fullName",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "secondName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    }
+  }
+}
