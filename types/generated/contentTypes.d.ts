@@ -351,6 +351,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::category.category'> & Schema.Attribute.Private
     parent: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>
     publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.UID<'label'> & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
   }
