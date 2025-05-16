@@ -357,6 +357,32 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   }
 }
 
+export interface ApiGoodGood extends Struct.CollectionTypeSchema {
+  collectionName: 'goods'
+  info: {
+    displayName: 'Good'
+    pluralName: 'goods'
+    singularName: 'good'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required
+    gallery: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::good.good'> & Schema.Attribute.Private
+    name: Schema.Attribute.String & Schema.Attribute.Required
+    price: Schema.Attribute.Integer & Schema.Attribute.Required
+    publishedAt: Schema.Attribute.DateTime
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+  }
+}
+
 export interface PluginContentReleasesRelease extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases'
   info: {
@@ -767,6 +793,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission
       'admin::user': AdminUser
       'api::category.category': ApiCategoryCategory
+      'api::good.good': ApiGoodGood
       'plugin::content-releases.release': PluginContentReleasesRelease
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction
       'plugin::i18n.locale': PluginI18NLocale
