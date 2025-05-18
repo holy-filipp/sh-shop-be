@@ -383,6 +383,32 @@ export interface ApiGoodGood extends Struct.CollectionTypeSchema {
   }
 }
 
+export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
+  collectionName: 'orders'
+  info: {
+    description: ''
+    displayName: 'Order'
+    pluralName: 'orders'
+    singularName: 'order'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    deliveryAddress: Schema.Attribute.String & Schema.Attribute.Required
+    goods: Schema.Attribute.JSON & Schema.Attribute.Required
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> & Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    total: Schema.Attribute.Decimal
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    user: Schema.Attribute.Relation<'oneToOne', 'plugin::users-permissions.user'>
+  }
+}
+
 export interface PluginContentReleasesRelease extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases'
   info: {
@@ -794,6 +820,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser
       'api::category.category': ApiCategoryCategory
       'api::good.good': ApiGoodGood
+      'api::order.order': ApiOrderOrder
       'plugin::content-releases.release': PluginContentReleasesRelease
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction
       'plugin::i18n.locale': PluginI18NLocale
